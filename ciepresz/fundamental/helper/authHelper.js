@@ -6,12 +6,12 @@ const header = {
     'Accept': 'application/json'
 };
 
-async function login({url, payload}) {
+async function login({ url, payload }) {
     const res = await request(url)
         .post(endpoint)
         .set(header)
         .send(payload);
-    return { tokenAuth: res.body.token };
+    return res;
 }
 
 module.exports = { login };

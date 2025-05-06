@@ -20,7 +20,7 @@ describe('create booking and delete booking', () => {
             header,
             payload: config.users
         })
-        tokenAuth = res.tokenAuth
+        tokenAuth = await res.body.token
     });
 
     it('create booking', async () => {
@@ -44,7 +44,8 @@ describe('create booking and delete booking', () => {
         expect(response.status).to.equal(200);
     });
 
-    it('delete booking', async () => {
+    it('delete booking', async function () {
+        this.timeout(10000);
         const newEndpoint = `${endpoint}/${bookingID}`;
         const response = await request(url)
             .delete(newEndpoint)

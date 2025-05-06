@@ -1,9 +1,8 @@
-require('dotenv').config();
+require('dotenv').config({ path: require('path').resolve(__dirname, './.env') });
 
 const requiredEnv = ['ENV', 'API_URL'];
 const users = require('./data/user_data.json');
 const booking = require('./data/booking_data.json');
-const auth = require('./helper/authHelper.js');
 
 
 if (process.env.ENV !== 'restful-booker') {
